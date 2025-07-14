@@ -1,3 +1,74 @@
+
+$(document).ready(function() {
+    // Sticky Header functionality
+    const headerBottom = $('.header-bottom');
+    const headerContainer = $('.header-container');
+    
+    // ایجاد placeholder برای جلوگیری از جهش محتوا
+    const placeholder = $('<div class="sticky-placeholder"></div>');
+    headerContainer.after(placeholder);
+    
+    let isSticky = false;
+    
+    // محاسبه offset برای شروع sticky
+    function getHeaderBottomOffset() {
+        const headerTop = $('.header-top');
+        const headerMiddle = $('.header-middle');
+        
+        let offset = 0;
+        if (headerTop.length) offset += headerTop.outerHeight();
+        if (headerMiddle.length) offset += headerMiddle.outerHeight();
+        
+        return offset;
+    }
+    
+    function handleScroll() {
+        const scrollTop = $(window).scrollTop();
+        const headerBottomOffset = getHeaderBottomOffset();
+        
+        if (scrollTop >= headerBottomOffset) {
+            // اگر sticky نیست، sticky کن
+            if (!isSticky) {
+                headerBottom.addClass('sticky');
+                placeholder.addClass('active').height(headerBottom.outerHeight());
+                isSticky = true;
+            }
+        } else {
+            // اگر به بالای صفحه برگشته، sticky را بردار
+            if (isSticky) {
+                headerBottom.removeClass('sticky');
+                placeholder.removeClass('active');
+                isSticky = false;
+            }
+        }
+    }
+    
+    // Event listener با performance optimization
+    let ticking = false;
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(function() {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    $(window).on('scroll', requestTick);
+    
+    // بررسی اولیه در صورت لود شدن صفحه در وسط
+    handleScroll();
+    
+    // مدیریت resize برای responsive بودن
+    $(window).on('resize', function() {
+        if (isSticky) {
+            placeholder.height(headerBottom.outerHeight());
+        }
+    });
+});
+   
    $('.has-megamenu > .nav-link').on('click', function(e) {
     if (window.innerWidth <= 991) {
         e.preventDefault();
