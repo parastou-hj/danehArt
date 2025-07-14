@@ -234,6 +234,95 @@ $(document).ready(function() {
     // Uncomment to enable dynamic loading
     // loadDynamicCategories();
 });
+
+ // Mobile Menu Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileSidebar = document.getElementById('mobileSidebar');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+
+            // Toggle mobile menu
+            function toggleMobileMenu() {
+                mobileMenuToggle.classList.toggle('active');
+                mobileSidebar.classList.toggle('active');
+                mobileOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileSidebar.classList.contains('active') ? 'hidden' : '';
+            }
+
+            // Close mobile menu
+            function closeMobileMenu() {
+                mobileMenuToggle.classList.remove('active');
+                mobileSidebar.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // Event listeners
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+            mobileCloseBtn.addEventListener('click', closeMobileMenu);
+            mobileOverlay.addEventListener('click', closeMobileMenu);
+
+            // Handle submenu toggles
+            document.querySelectorAll('[data-submenu]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenuId = this.getAttribute('data-submenu') + '-submenu';
+                    const submenu = document.getElementById(submenuId);
+                    const parentItem = this.closest('.mobile-nav-item');
+                    
+                    // Toggle submenu
+                    parentItem.classList.toggle('active');
+                    submenu.classList.toggle('active');
+                });
+            });
+
+            // Handle megamenu toggles
+            document.querySelectorAll('[data-megamenu]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const megamenuId = this.getAttribute('data-megamenu') + '-megamenu';
+                    const megamenu = document.getElementById(megamenuId);
+                    const parentItem = this.closest('.mobile-nav-item');
+                    
+                    // Toggle megamenu
+                    parentItem.classList.toggle('active');
+                    megamenu.classList.toggle('active');
+                });
+            });
+
+            // Handle category toggles in megamenu
+            document.querySelectorAll('[data-category]').forEach(header => {
+                header.addEventListener('click', function() {
+                    const categoryId = this.getAttribute('data-category') + '-content';
+                    const content = document.getElementById(categoryId);
+                    const parentCategory = this.closest('.mobile-megamenu-category');
+                    
+                    // Toggle category content
+                    parentCategory.classList.toggle('active');
+                    content.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking on regular links
+            document.querySelectorAll('.mobile-nav-link:not([data-submenu]):not([data-megamenu]), .mobile-submenu-link, .mobile-category-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMobileMenu();
+                });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 992) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Prevent menu close when clicking inside sidebar
+            mobileSidebar.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
    
    $(document).ready(function(){
             var articlesCarousel = $('#banner-owl').owlCarousel({
