@@ -1,6 +1,7 @@
 :root{
     --primary-color:hsl(90.86deg 13.94% 50.78%);
     --secondary-color:hsl(18.67deg 63.38% 86.08%);
+    --deactive-text:hsl(0, 0%, 55%);
 }
  * {
             margin: 0;
@@ -22,6 +23,10 @@
   @font-face {
     font-family: kalameh;
     src: url(./font/Kalameh-Medium.ttf);
+  }
+    @font-face {
+    font-family: kalamehthin;
+    src: url(./font/Kalameh-light.ttf);
   }
   @font-face {
     font-family: IRANYekanWebBold;
@@ -59,9 +64,7 @@ ul li{
     list-style: none;
     /* display: inline-block; */
 }
-a{
 
-}
 .header-container{
     z-index: 10000;
 }
@@ -177,6 +180,17 @@ width: 100%;
 .about-last{
     padding-top: 80px;
 }
+.gallery-title h3{
+    font-size: 2.2em;
+    font-weight: 400;
+}
+.gallery-title h6{
+    color: var(--deactive-text);
+    font-family: kalamehthin;
+    font-size:1em;
+
+
+}
 .gallery-img{
     padding: 20px;
     border:9px solid #000;
@@ -186,6 +200,31 @@ width: 100%;
     object-fit: fill;
     height: 100%;
 }
+.gallery-txt{
+    margin-top: 16px !important;
+}
+.gallery-txt h5{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.gallery-txt p{
+    font-weight: bold
+}
+.gallery-txt p span{
+    font-weight: 300;
+    color: var(--deactive-text);
+}
+.glori-txt{
+    max-width: 380px;
+    text-align: justify;
+}
+.glori-txt h4{
+    font-size: 2.2em;
+}
+.glori-txt p{
+    line-height: 30px;
+}
+
 .glory-item{
     height: 380px;
 }
@@ -197,6 +236,7 @@ width: 100%;
     top: 12%;
     left: -50px;
     transform: rotate(-90deg);
+    font-size: 1.2em;
 }
 .glory-item img{
     height: 100%;
@@ -206,6 +246,7 @@ width: 100%;
     background-repeat: no-repeat;
     background-size: cover; */
     height: 420px;
+    margin: 80px 0px;
 }
 .train-sec img{
     position: absolute;
@@ -223,12 +264,33 @@ width: 100%;
     right: 25%;
 
 }
+.train-txt h1{
+    font-size: 2.2em;
+}
+.train-txt h6{
+    font-size: .9em;
+    font-family: kalamehthin;
+}
+.train-txt .about-more{
+    padding: 12px 35px;
+    font-size: 1.2em;
+}
 .top-footer{
     background-color: var(--primary-color);
+    color: var(--secondary-color);
+
+}
+.top-footer span{
+    font-size: 1.1em;
+    font-family: kalamehthin;
 }
 .top-footer .tels{
     font-family: iranyekanwebregularfanum;
 
+}
+.top-footer h3{
+    font-size: 2.2em;
+    font-weight: 300;
 }
 .main-footer{
        background: hsl(91.58deg 16.81% 22.16%);
@@ -242,11 +304,25 @@ width: 100%;
             color: white;
         }
         
+        
         .footer-links {
             list-style: none;
             padding: 0;
+            padding-right: 15px;
             margin: 0;
+            position: relative;
         }
+        .footer-links::before {
+    position: absolute;
+    content: "";
+    height: 90%;
+    width: 2px;
+    background: hsl(90.86deg 13.94% 50.78%);
+    top: 5%;
+    right: 0px;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
         
         .footer-links li {
             margin-bottom: 8px;
@@ -267,15 +343,15 @@ width: 100%;
         
         .social-icons {
             display: flex;
-            gap: 15px;
+            align-items: end;
+            /* justify-content: space-between; */
+            gap: 25px;
             margin-top: 15px;
-            flex-wrap: wrap;
+            /* flex-wrap: wrap; */
         }
         
         .social-icon {
-            /* width: 40px;
-            height: 40px; */
-            /* background: rgba(255, 255, 255, 0.15); */
+          
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -284,7 +360,8 @@ width: 100%;
             text-decoration: none;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            /* border: 1px solid rgba(255, 255, 255, 0.2); */
+            /* margin-left: 20px; */
+           
         }
         
         .social-icon:hover {
@@ -309,6 +386,9 @@ width: 100%;
         .logo-container {
             display: inline-block;
             position: relative;
+        }
+        .footer-navs{
+            font-family: kalamehthin;
         }
         
     
