@@ -348,11 +348,11 @@ $(document).ready(function() {
             });
             
             // Custom Navigation
-            $('.carousel-prev').click(function() {
+            $('#baner-right').click(function() {
                 articlesCarousel.trigger('prev.owl.carousel');
             });
             
-            $('.carousel-next').click(function() {
+            $('#baner-left').click(function() {
                 articlesCarousel.trigger('next.owl.carousel');
             });
         });
@@ -391,12 +391,19 @@ $(document).ready(function() {
             
            
         });
+          $("#galery-right").click(function () {
+    $("#gallery-owl").trigger("prev.owl.carousel");
+  });
+  
+  $("#galery-left").click(function () {
+    $("#gallery-owl").trigger("next.owl.carousel");
+  });
            $(document).ready(function(){
             $('#glory-owl-one').owlCarousel({
                 rtl:true,
                 loop: true,
                 margin: 5,
-                nav: true,
+                
                 dots: false,
                 autoplay: true,
                 autoplayTimeout: 4000,
@@ -411,12 +418,19 @@ $(document).ready(function() {
             
            
         });
+            $("#glori-right").click(function () {
+    $("#glory-owl-one").trigger("prev.owl.carousel");
+  });
+  
+  $("#glori-left").click(function () {
+    $("#glory-owl-one").trigger("next.owl.carousel");
+  });
          $(document).ready(function(){
             $('#glory-owl-two').owlCarousel({
                 rtl:true,
                 loop: true,
                 margin: 5,
-                nav: true,
+                
                 dots: false,
                 autoplay: true,
                 autoplayTimeout: 4000,
@@ -431,6 +445,13 @@ $(document).ready(function() {
             
            
         });
+                $("#glori-right-two").click(function () {
+    $("#glory-owl-two").trigger("prev.owl.carousel");
+  });
+  
+  $("#glori-left-two").click(function () {
+    $("#glory-owl-two").trigger("next.owl.carousel");
+  });
 
 function toggleSearch() {
     const dropdown = document.getElementById('searchDropdown');
@@ -465,3 +486,9 @@ document.addEventListener('click', function(event) {
         toggleSearch();
     }
 });
+ function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
