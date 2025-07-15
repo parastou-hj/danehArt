@@ -59,6 +59,7 @@
 }
 ul{
     margin-bottom: 0px;
+    padding-left: 0px;
 }
 ul li{
     list-style: none;
@@ -155,7 +156,7 @@ ul li{
     height: 100%;
 }
 .logo-sec-sticky{
-    min-width: 230px !important;
+    width: 230px !important;
 }
 .logo-sec-sticky img:first-child{
     margin-top: 20px;
@@ -184,7 +185,7 @@ nav ul li{
 }
 .logo-sec{
     height: 100%;
-    min-width: 300px;
+    width: 300px;
 }
 .logo-txt{
 align-self: center;
@@ -308,7 +309,7 @@ max-width: 450px;
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .counter-container {
-        flex-direction: column;
+        /* flex-direction: column; */
         gap: 20px;
         padding: 20px 15px;
     }
@@ -321,7 +322,7 @@ max-width: 450px;
     }
     
     .counter-item:not(:last-child)::after {
-        display: none;
+        /* display: none; */
     }
     
     .counter-number {
@@ -1743,6 +1744,15 @@ right: -20px;
     }
 }
 @media screen and (max-width: 1150px) {
+    #galery-right{
+
+right: 0px;
+
+}
+#galery-left{
+
+    left:0px
+}
        .main-nav .nav-item > a {
  
     padding: 15px 5px;
@@ -1815,9 +1825,7 @@ right: -20px;
    .gallery-img{
     height: 225px;
    }
-   .glory-item{
-    height: 300px;
-   }
+   
    .glory-name{
     position: absolute;
     top: 100%;
@@ -1899,6 +1907,28 @@ right: -20px;
         }
 
         @media screen and (max-width: 480px) {
+            .glory-item{
+    height: 250px;
+   }
+            .about-part .img-sec img {
+    width: 300px;
+   
+}
+             .certificate{
+  
+    right: 25%;
+    width: 50%;
+
+}
+            .baner-item img{
+    height: 200px
+}
+.banner-sec .navs img{
+    height: 30px;
+}
+            .tels td{
+                padding: 10px 0px;
+            }
             .mobile-sidebar {
                 /* width: 100%; */
                 right: -100%;
