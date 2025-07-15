@@ -149,7 +149,17 @@ ul li{
 
 .sticky-placeholder.active {
     display: block;
-    height: 80px; /* ارتفاع header-bottom را متناسب با سایت خود تنظیم کنید */
+    height: 80px;
+}
+.logo-sticky{
+    height: 100%;
+}
+.logo-sec-sticky{
+    min-width: 230px !important;
+}
+.logo-sec-sticky img:first-child{
+    margin-top: 20px;
+    width: 75%;
 }
 
 .header-bottom.sticky .megamenu-container {
@@ -210,6 +220,136 @@ max-width: 450px;
 .about-sec{
     font-size: 1.1em;
 }
+.counter-sec {
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+.counter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); */
+    border-radius: 15px;
+    padding: 25px 15px;
+    /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); */
+    /* border: 1px solid #e9ecef; */
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.counter-item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 10px 5px;
+    transition: all 0.3s ease;
+}
+
+.counter-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background:var(--primary-color);
+}
+
+.counter-item:hover {
+    transform: translateY(-2px);
+}
+
+.counter-number {
+    font-size: 2em;
+     font-family: iranyekanwebregularfanum;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    display: block;
+    /* text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    position: relative;
+}
+
+.counter-number::before {
+    content: '+';
+    color: var(--primary-color);
+    font-size: 0.8em;
+    position: relative;
+    top: 50%;
+}
+
+.counter-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 5px;
+}
+
+/* Animation for counting */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.counter-number.animate {
+    animation: countUp 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .counter-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 15px;
+    }
+    
+    .counter-item {
+        padding: 15px 10px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.7);
+        width: 100%;
+    }
+    
+    .counter-item:not(:last-child)::after {
+        display: none;
+    }
+    
+    .counter-number {
+        font-size: 2rem;
+    }
+    
+    .counter-label {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .counter-sec {
+        padding: 0 10px;
+    }
+    
+    .counter-container {
+        padding: 15px 10px;
+    }
+    
+    .counter-number {
+        font-size: 1.8rem;
+    }
+    
+    .counter-label {
+        font-size: 0.9rem;
+    }
+}
 .about-center{
     text-align: center;
 }
@@ -240,7 +380,14 @@ max-width: 450px;
     object-fit: fill;
 }
 .about-last{
-    padding-top: 80px;
+    padding-top: 100px;
+}
+.main-img{
+    width: 100%;
+
+}
+.main-img img{
+    width: 100%;
 }
 #galery-right{
 top: 40%;
@@ -392,6 +539,10 @@ right: -20px;
 .tels table td span{
      font-family: iranyekanwebregularfanum;
      font-size: 1.2em;
+}
+.tels table td a{
+     color: var(--secondary-color);
+
 }
 .main-footer{
        background: hsl(91.58deg 16.81% 22.16%);
@@ -1382,7 +1533,7 @@ right: -20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    /* gap: 8px; */
     z-index: 100;
     margin: 0;
     padding: 0;
@@ -1402,7 +1553,7 @@ right: -20px;
 /* Create thin white lines */
 #banner-owl .owl-dots .owl-dot span {
     display: block;
-    width: 35px;
+    width: 25px;
     height: 2px;
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 1px;
@@ -1413,7 +1564,7 @@ right: -20px;
 /* Active dot style */
 #banner-owl .owl-dots .owl-dot.active span {
     background-color: white;
-    width: 50px;
+    width: 45px;
     height: 3px;
 }
 
@@ -1443,6 +1594,128 @@ right: -20px;
 .fixed img{
     max-width: 25px;
     height: 25px;
+}
+/* استایل‌های پایه about-more موجود */
+.about-more{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 2px solid transparent;
+    /* border-radius: 5px; */
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* افکت‌های hover */
+.about-more:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* افکت موج برای hover */
+.about-more::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.about-more:hover::before {
+    left: 100%;
+}
+
+
+
+
+
+.about-more.secondary-style:hover {
+    background-color: #2c5530;
+    color: var(--secondary-color);
+    border-color: #2c5530;
+}
+
+/* حالت responsive */
+@media screen and (max-width: 768px) {
+    .about-more:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* استایل‌های خاص برای دکمه‌های قسمت آموزش */
+.train-txt .about-more:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+    border-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* حالت‌های مختلف برای استفاده در بخش‌های مختلف */
+.about-more.outline-style {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.about-more.outline-style:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-color: var(--primary-color);
+}
+
+/* حالت disabled در صورت نیاز */
+.about-more:disabled,
+.about-more.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.about-more:disabled:hover,
+.about-more.disabled:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-color: transparent;
+    transform: none;
+    box-shadow: none;
+}
+
+/* حالت loading در صورت نیاز */
+.about-more.loading {
+    position: relative;
+    color: transparent;
+}
+
+.about-more.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--secondary-color);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* Responsive */
@@ -1500,6 +1773,13 @@ right: -20px;
 }
 
 @media screen and (max-width: 992px) {
+  .sticky-placeholder.active {
+    /* display: block;
+    height: 60px; */
+}
+.nav-logo{
+    height:60px
+}
     .search-dropdown{
         right: 0;
     }
@@ -1536,7 +1816,7 @@ right: -20px;
     height: 225px;
    }
    .glory-item{
-    height: 250px;
+    height: 300px;
    }
    .glory-name{
     position: absolute;
@@ -1586,6 +1866,15 @@ right: -20px;
 .social-icons{
     justify-content: center;
 }
+.tels{
+    margin-top: 20px;
+}
+#galery-right{
+    right: 0;
+}
+#galery-left{
+    left: 0;
+}
 }
   /* Responsive Design */
         @media screen and (max-width: 992px) {
@@ -1600,6 +1889,7 @@ right: -20px;
             .search {
                 display: none;
             }
+            
         }
 
         @media screen and (max-width: 768px) {

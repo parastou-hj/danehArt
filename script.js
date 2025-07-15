@@ -3,6 +3,8 @@ $(document).ready(function() {
     // Sticky Header functionality
     const headerBottom = $('.header-bottom');
     const headerContainer = $('.header-container');
+      const logo= $('.logo');
+      const logoSec=$('.logo-sec')
     
     // ایجاد placeholder برای جلوگیری از جهش محتوا
     const placeholder = $('<div class="sticky-placeholder"></div>');
@@ -14,6 +16,7 @@ $(document).ready(function() {
     function getHeaderBottomOffset() {
         const headerTop = $('.header-top');
         const headerMiddle = $('.header-middle');
+      
         
         let offset = 0;
         if (headerTop.length) offset += headerTop.outerHeight();
@@ -32,6 +35,9 @@ $(document).ready(function() {
                 headerBottom.addClass('sticky');
                 placeholder.addClass('active').height(headerBottom.outerHeight());
                 isSticky = true;
+                logo.addClass('logo-sticky');
+                logoSec.addClass('logo-sec-sticky')
+
             }
         } else {
             // اگر به بالای صفحه برگشته، sticky را بردار
@@ -39,6 +45,8 @@ $(document).ready(function() {
                 headerBottom.removeClass('sticky');
                 placeholder.removeClass('active');
                 isSticky = false;
+                 logo.removeClass('logo-sticky');
+                logoSec.removeClass('logo-sec-sticky')
             }
         }
     }
@@ -361,12 +369,12 @@ $(document).ready(function() {
                 rtl:true,
                 loop: true,
                 margin: 5,
-                nav: true,
+                // nav: true,
                 dots: false,
                 autoplay: true,
                 autoplayTimeout: 4000,
                 autoplayHoverPause: true,
-                navText: ['‹', '›'],
+                // navText: ['‹', '›'],
                 responsive: {
                     0: {
                         items: 1.5
@@ -492,3 +500,57 @@ document.addEventListener('click', function(event) {
                 behavior: 'smooth'
             });
         }
+
+
+function animateCounter() {
+    const counters = document.querySelectorAll('.counter-number');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const increment = target / 100;
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            counter.textContent = Math.floor(current);
+        }, 20);
+        
+        // Add animation class
+        counter.classList.add('animate');
+    });
+}
+
+// Intersection Observer for triggering animation
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounter();
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Start observing when DOM is loaded
+$(document).ready(function() {
+    const counterContainer = document.querySelector('.counter-container');
+    if (counterContainer) {
+        observer.observe(counterContainer);
+    }
+    
+    // Fallback: trigger animation after 2 seconds if intersection observer doesn't work
+    setTimeout(() => {
+        const counters = document.querySelectorAll('.counter-number');
+        if (counters.length > 0 && counters[0].textContent === '0') {
+            animateCounter();
+        }
+    }, 2000);
+});
